@@ -1,0 +1,24 @@
+﻿create table cliente (
+	cpf varchar(14),
+	nome varchar(70),
+	idade int,
+	sexo char(1),
+	constraint cliente_pkey primary key (cpf)
+);
+
+create table filme (
+	id int,
+	nome varchar(70),
+	genero varchar(40),
+	constraint filme_pkey primary key (id)
+);
+
+create table locacao (
+	id_filme int,
+	cpf_cliente varchar(14),
+	data_locacao varchar(10),
+	data_devolucao varchar(10),
+	constraint locacao_pkey primary key (id_filme, cpf_cliente, data_locacao),
+	constraint locacao_fkey1 foreign key (id_filme) references filme (id),
+	constraint locacao_fkey2 foreign key (cpf_cliente) references cliente (cpf)
+);

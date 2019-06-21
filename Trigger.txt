@@ -1,0 +1,19 @@
+/* criando funcao */
+create or replace function func_menor () returns trigger as
+$$
+begin
+if new.idade >= 18 then 
+return new;
+else return null;
+end if;
+end
+$$
+language 'plpgsql';
+
+*/ criando trigger */ 
+create trigger "menor_idade"
+before insert
+on "cliente"
+for each row
+execute procedure func_menor ();  
+
