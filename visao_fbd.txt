@@ -1,0 +1,6 @@
+CREATE VIEW alugados AS 
+SELECT f.id, f.nome, f.genero
+FROM filme f, locacao l
+WHERE l.id_filme = f.id;
+
+
